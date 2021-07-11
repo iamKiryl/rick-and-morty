@@ -1,42 +1,27 @@
 import React from 'react';
-import styled from 'styled-components';
-import image from './background.png';
 import Header from '../header';
 import ItemList from '../itemList';
 import GotService from '../../services/gotService';
+import { AppBlock, Container as AppContainer } from './appElements';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
-import './app.css';
+import { GlobalStyle } from '../../globalStyle';
 
 
-function App() {
+const App = () => {
     const gotService = new GotService();
-
-
-    
     return (
         <Router>
-            <AppBlock className='app'>
-                <Container>
+            <GlobalStyle/>
+            <AppBlock>
+                <AppContainer>
                     <Header/>
-                    <Route path='/characters/' render={() => <ItemList getData={gotService.getAllCharacters} />}/>
-                    <Route path='/location/' render={() => <ItemList getData={gotService.getAllLocations} />}/>
-                    <Route path='/episode/' render={() => <ItemList getData={gotService.getAllEpisodes} />}/>
-                </Container>
+                        <Route path='/characters/' render={() => <ItemList getData={gotService.getAllCharacters} />}/>
+                        <Route path='/location/' render={() => <ItemList getData={gotService.getAllLocations} />}/>
+                        <Route path='/episode/' render={() => <ItemList getData={gotService.getAllEpisodes} />}/>
+                </AppContainer>
             </AppBlock>
         </Router>
     )
 }
-
-const AppBlock = styled.div`
-    width: 100%;
-    background-image: url(${image});
-    background-position: center;
-    background-size: cover;
-    min-height: 800px;
-`
-const Container = styled.div`
-    max-width: 800px;
-    margin: 0 auto;
-`
 
 export default App;

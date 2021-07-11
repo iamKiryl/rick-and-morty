@@ -13,15 +13,25 @@ export default class GotService{
     }
     getAllCharacters = async () => {
         const res = await this.getResource('/character/');
-        return res.results;
+        return {
+            results: res.results, 
+            res
+        }
+            ;
     }
     getAllEpisodes = async () => {
         const res =  await this.getResource('/episode/');
-        return res.results;
+        return {
+            results: res.results, 
+            res
+        }
     }
     getAllLocations = async () => {
         const res = await this.getResource('/location/');
-        return res.results;
+        return {
+            results: res.results, 
+            res
+        }
     }
     
 }
