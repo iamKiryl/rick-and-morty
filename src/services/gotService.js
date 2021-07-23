@@ -33,5 +33,56 @@ export default class GotService{
             res
         }
     }
+    getCharacter = async (id) => {
+        const character = await this.getResource(`/character/${id}/`);
+        return this._transformCharacter(character);
+    }
+
+    getEpisode = async (id) => {
+        const episode = await this.getResource(`/episode/${id}`);
+        return episode;
+    }
+
+    getLocation = async (id) => {
+        const location = await this.getResource(`/location/${id}`);
+        return location;
+    }
+
+    isSet = data => data ? data : 'no data :(';
+
+    _extractId = (item) => {
+        const idRegExp = /\/([0-9]*)$/;
+        return item.url.match(idRegExp)[1];
+    }
+
+    _transformCharacter = (char) => {
+        return {
+            id: this._extractId(char),
+            name: this.isSet(char.name),
+            status: this.isSet(char.status),
+            gender: this.isSet(char.gender),
+            origin: this.isSet(char.origin.name), 
+        };
+    }
+
+    _transformEpisode = (episode) => {
+        return {
+            id: this._extractId(episode),
+            name: this.isSet(episode.name),
+            status: this.isSet(episode.status),
+            gender: this.isSet(episode.gender),
+            origin: this.isSet(episode.origin.name), 
+        };
+    }
+
+    _transformLocatoin = (location) => {
+        return {
+            id: this._extractId(location),
+            name: this.isSet(location.name),
+            status: this.isSet(location.status),
+            gender: this.isSet(location.gender),
+            origin: this.isSet(location.origin.name), 
+        };
+    }
     
 }

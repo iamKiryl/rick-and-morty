@@ -1,23 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import {Ul, Li} from './itemListElements';
+import {Ul, Li, ListLink} from './itemListElements';
 
-const ItemList = ({getData}) => {
+const ItemList = ({getData, getPath}) => {
     const [ itemsList, setItemsList ] = useState([]);
+    
     const renderItems = (arr) => {
+        
         return arr.map(item => {
             return (
-                <Li key={item.id}>{item.name}</Li>
+                <Li key={item.id}><ListLink to={`${getPath}${item.id}`}>{item.name}</ListLink></Li>
             )
         })
     }
-
-    // useEffect(() => {
-    //     (async () => {
-    //         getData().then(async items => {
-    //             await setItemsList(items)
-    //         })
-    //     })()   
-    // }, [getData])
 
     useEffect(() => {
         (async () => {
@@ -25,7 +19,6 @@ const ItemList = ({getData}) => {
                 setItemsList(results);
         })()   
     }, [getData])
-
 
     const items = renderItems(itemsList);
     if (!itemsList) return null

@@ -7,6 +7,7 @@ export const AppBlock = styled.div`
     background-position: center;
     background-size: cover;
     min-height: 800px;
+    height: 100vh;
 `
 export const Container = styled.div`
     max-width: 800px;
