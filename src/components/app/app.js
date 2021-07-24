@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Header from '../header';
 import ItemList from '../itemList';
 import GotService from '../../services/gotService';
@@ -6,13 +6,12 @@ import { AppBlock, Container as AppContainer } from './appElements';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import { GlobalStyle } from '../../globalStyle';
 import Container from '../container';
-import ItemDetails from '../itemDetails/itemDetails';
+import {CharacterDetails, LocationDetails, EpisodeDetails} from '../itemsDetails';
 
 
 const App = () => {
 
     const gotService = new GotService();
-    const [characterId, setCharacterId] = useState(0);
 
     return (
         <Router>
@@ -20,21 +19,30 @@ const App = () => {
             <AppBlock>
                 <AppContainer>
                     <Header/>
-                        <Route path='/characters/' 
+                        <Route exact path='/characters/' 
                             render={() => 
-                                <Container  itemList={<ItemList setCharacterId={setCharacterId} getPath={'/characters/'} getData={gotService.getAllCharacters} />} 
+                                <Container itemList={<ItemList getPath={'/characters/'} getData={gotService.getAllCharacters} />} 
                                 /> }/>
                         <Route exact path='/characters/:id' 
                             render={() => 
-                                <Container  itemList={<ItemDetails id={characterId} getData={gotService.getCharacter} />} 
+                                <Container itemList={<CharacterDetails getData={gotService.getCharacter} />} 
                                 /> }/>
-                        <Route path='/location/' 
+                        <Route exact path='/location/' 
                             render={() => 
-                                <Container itemList={<ItemList getData={gotService.getAllLocations} /> } 
+                                <Container itemList={<ItemList getPath={'/location/'} getData={gotService.getAllLocations} /> } 
                             />}/>
-                        <Route path='/episode/' 
+                        <Route exact path='/location/:id' 
+                            render={() => 
+                                <Container itemList={<LocationDetails  getData={gotService.getLocation} /> } 
+                            />}/>
+                        <Route exact path='/episode/' 
                             render={() =>   
-                                <Container itemList={<ItemList getData={gotService.getAllEpisodes}/>} />  
+                                <Container itemList={<ItemList getPath={'/episode/'} getData={gotService.getAllEpisodes}/>} />  
+                            }/>
+
+                        <Route exact path='/episode/:id' 
+                            render={() =>   
+                                <Container itemList={<EpisodeDetails getData={gotService.getEpisode}/>} />  
                             }/>
                 </AppContainer>
             </AppBlock>

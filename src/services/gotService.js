@@ -40,12 +40,12 @@ export default class GotService{
 
     getEpisode = async (id) => {
         const episode = await this.getResource(`/episode/${id}`);
-        return episode;
+        return this._transformEpisode(episode);
     }
 
     getLocation = async (id) => {
         const location = await this.getResource(`/location/${id}`);
-        return location;
+        return this._transformLocatoin(location);
     }
 
     isSet = data => data ? data : 'no data :(';
@@ -69,9 +69,8 @@ export default class GotService{
         return {
             id: this._extractId(episode),
             name: this.isSet(episode.name),
-            status: this.isSet(episode.status),
-            gender: this.isSet(episode.gender),
-            origin: this.isSet(episode.origin.name), 
+            episode: this.isSet(episode.episode),
+            created: this.isSet(episode.created)
         };
     }
 
@@ -79,9 +78,8 @@ export default class GotService{
         return {
             id: this._extractId(location),
             name: this.isSet(location.name),
-            status: this.isSet(location.status),
-            gender: this.isSet(location.gender),
-            origin: this.isSet(location.origin.name), 
+            dimension: this.isSet(location.dimension),
+            created: this.isSet(location.created),
         };
     }
     
