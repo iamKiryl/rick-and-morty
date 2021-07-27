@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import Spinner from '../spinner';
-import { DetailsDiv } from './itemDetailsElements';
+import { DetailsDiv, ArrowLink, Arrow } from './itemDetailsElements';
 
 const EpisodeDetails = ({getData}) => {
 
@@ -29,6 +29,9 @@ const EpisodeDetails = ({getData}) => {
     loading ? <Spinner/> : 
     (
       <DetailsDiv>
+          <ArrowLink to='/rick-and-morty/episode/' >
+                     <Arrow/>
+          </ArrowLink>
           <div>Episode No: {episode}</div>
           <div>Title: {name}</div>
           <div>Created: {created}</div>

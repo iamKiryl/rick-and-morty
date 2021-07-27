@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import { DetailsDiv } from './itemDetailsElements';
+import { DetailsDiv, ArrowLink, Arrow } from './itemDetailsElements';
 import Spinner from '../spinner';
+
 
 const LocationDetails = ({getData}) => {
 
@@ -28,6 +29,9 @@ const LocationDetails = ({getData}) => {
         loading ? <Spinner/> : 
         (
             <DetailsDiv>
+                <ArrowLink to='/rick-and-morty/location/' >
+                     <Arrow/>
+            </ArrowLink>
                 <div>Title: {name}</div>
                 <div>Dimension: {dimension}</div>
                 <div>Created: {created}</div>
