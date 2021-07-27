@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import {Ul, Li, ListLink} from './itemListElements';
+import Spinner from '../spinner';
 
 const ItemList = ({getData, getPath}) => {
     const [ itemsList, setItemsList ] = useState([]);
+    const [loading, setLoadind] = useState(true);
     
     const renderItems = (arr) => {
         
@@ -17,6 +19,7 @@ const ItemList = ({getData, getPath}) => {
         (async () => {
             const {results} = await getData();
                 setItemsList(results);
+                setLoadind(false);
         })()   
     }, [getData])
 
@@ -24,11 +27,13 @@ const ItemList = ({getData, getPath}) => {
     if (!itemsList) return null
 
     return (
-        <>
-            <Ul>
-                {items}
-            </Ul>  
-        </>
+        loading ? <Spinner/> : (
+            <>
+                <Ul>
+                    {items}
+                </Ul>  
+            </>
+        )
     );
 
 }

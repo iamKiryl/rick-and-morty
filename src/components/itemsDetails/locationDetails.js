@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import Spinner from '../spinner';
 
 const LocationDetails = ({getData}) => {
 
@@ -9,21 +10,28 @@ const LocationDetails = ({getData}) => {
 
 
     const [location, setLocation] = useState('');
+    const [loading, setLoadind] = useState(true);
 
     useEffect(() => {
         (async () => {
-            getData(id).then(item => setLocation(item))
+            getData(id).then(item => {
+                setLocation(item)
+                setLoadind(false);
+            })
         })()   
     }, [getData, id])
 
     const {dimension, name, created} = location;
             
     return (
-        <div>
-            <div>{name}</div>
-            <div>{dimension}</div>
-            <div>{created}</div>
-        </div>
+        loading ? <Spinner/> : 
+        (
+            <div>
+                <div>{name}</div>
+                <div>{dimension}</div>
+                <div>{created}</div>
+            </div>
+        )
     )
 }
 
