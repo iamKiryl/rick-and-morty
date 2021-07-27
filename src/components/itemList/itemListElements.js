@@ -13,7 +13,8 @@ li+li{
 `;
 
 export const ListLink = styled(Link)`
-
+    color: #2F4F4F;
+    text-decoration: none;
 `;
 
 export const Li = styled.li`

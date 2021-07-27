@@ -17,17 +17,17 @@ const Header = () => {
     return(
         <Head navlist={navList ? 1 : 0} >
             <LogoHead>
-                <Logo onClick={closeNavList} to='/'>Rick and Morty</Logo>
+                <Logo onClick={closeNavList} to='/rick-and-morty/'>Rick and Morty</Logo>
             </LogoHead>
             <Ul navlist={navList ? 1 : 0}>
                <li>
-                    <HeaderLink onClick={closeNavList} to='/characters/'>Characters</HeaderLink>   
+                    <HeaderLink onClick={closeNavList} to='/rick-and-morty/characters/'>Characters</HeaderLink>   
                 </li>
                 <li>
-                    <HeaderLink onClick={closeNavList} to='/location/'>Locations</HeaderLink>   
+                    <HeaderLink onClick={closeNavList} to='/rick-and-morty/location/'>Locations</HeaderLink>   
                 </li> 
                 <li>
-                    <HeaderLink onClick={closeNavList} to='/episode/'>Episodes</HeaderLink>   
+                    <HeaderLink onClick={closeNavList} to='/rick-and-morty/episode/'>Episodes</HeaderLink>   
                 </li> 
             </Ul>
             <IconDiv>
