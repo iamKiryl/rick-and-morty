@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Spinner from '../spinner';
+import { DetailsDiv } from './itemDetailsElements';
 
 const CharacterDetails = ({getData}) => {
 
@@ -26,12 +27,12 @@ const CharacterDetails = ({getData}) => {
 
         loading ? <Spinner/> : 
         (
-            <div>
-                <div>{name}</div>
-                <div>{gender}</div>
-                <div>{origin}</div>
-                <div>{status}</div>
-            </div>
+            <DetailsDiv>
+                <div>Name: {name}</div>
+                <div>Gender: {gender}</div>
+                <div>Origin: {origin}</div>
+                <div>Status: {status}</div>
+            </DetailsDiv>
         )
     
     )

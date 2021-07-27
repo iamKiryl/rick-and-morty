@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { DetailsDiv } from './itemDetailsElements';
 import Spinner from '../spinner';
 
 const LocationDetails = ({getData}) => {
@@ -26,11 +27,11 @@ const LocationDetails = ({getData}) => {
     return (
         loading ? <Spinner/> : 
         (
-            <div>
-                <div>{name}</div>
-                <div>{dimension}</div>
-                <div>{created}</div>
-            </div>
+            <DetailsDiv>
+                <div>Title: {name}</div>
+                <div>Dimension: {dimension}</div>
+                <div>Created: {created}</div>
+            </DetailsDiv>
         )
     )
 }
