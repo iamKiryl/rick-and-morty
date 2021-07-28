@@ -16,7 +16,7 @@ export const ArrowLink = styled(Link)`
     width: 50px;
     height: 50px;
     position: absolute;
-    left: -7rem;
+    left: -6rem;
     top: 50%;
     transform: translateY(-50%);
     border-radius: 50%;

@@ -22,7 +22,6 @@ const CharacterDetails = ({getData}) => {
     }, [getData, id])
 
     const {gender, name, origin, status} = character;
-    console.log(hrefArr.slice(0, -1).join('/'))
     return (
 
         loading ? <Spinner/> : 
