@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Spinner from '../spinner';
-import { DetailsDiv, ArrowLink, Arrow } from './itemDetailsElements';
+import { DetailsDiv, CharInfo, CharImageContainer, CharImage, ArrowLink, Arrow } from './itemDetailsElements';
 
 const CharacterDetails = ({getData}) => {
 
@@ -21,7 +21,7 @@ const CharacterDetails = ({getData}) => {
         })()   
     }, [getData, id])
 
-    const {gender, name, origin, status} = character;
+    const {gender, name, origin, status, img} = character;
     return (
 
         loading ? <Spinner/> : 
@@ -30,10 +30,15 @@ const CharacterDetails = ({getData}) => {
                 <ArrowLink to='/rick-and-morty/characters/' >
                      <Arrow/>
                 </ArrowLink>
-                <div>Name: {name}</div>
-                <div>Gender: {gender}</div>
-                <div>Origin: {origin}</div>
-                <div>Status: {status}</div>
+                <CharImageContainer>
+                    <CharImage src={img} />
+                </CharImageContainer>
+                <CharInfo>
+                    <div>Name: {name}</div>
+                    <div>Gender: {gender}</div>
+                    <div>Origin: {origin}</div>
+                    <div>Status: {status}</div>
+                </CharInfo>
             </DetailsDiv>
         )
     

@@ -61,7 +61,8 @@ export default class GotService{
             name: this.isSet(char.name),
             status: this.isSet(char.status),
             gender: this.isSet(char.gender),
-            origin: this.isSet(char.origin.name), 
+            origin: this.isSet(char.origin.name),
+            img: this.isSet(char.image)
         };
     }
 
