@@ -6,14 +6,11 @@ import {BsFillShiftFill} from "react-icons/bs";
 export const DetailsDiv = styled.div`
     margin: 0 auto;
     display: flex;
+    flex-direction: column;
     background-color: rgba(255, 255, 255, 0.8);
     padding: 1rem 1.3rem;
     border-radius: 5px;
     position: relative;
-    
-    @media screen and (max-width: 390px){
-        flex-direction: column;
-    }
 `; 
 
 export const CharImageContainer = styled.div`
@@ -39,16 +36,18 @@ export const ArrowLink = styled(Link)`
     width: 50px;
     height: 50px;
     position: absolute;
-    right: 10px;
-    top: 10px;
+    left: -2rem;
+    top: 50%;
+    transform: translateY(-50%);
     border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.8);
     display: flex;
     justify-content: center;
     align-items: center;
-    @media screen and (max-width: 390px){
-        right: none;
-        left: 10px;
+    box-shadow: 1px 1px rgba(0, 0, 0, 0.3);
+    transition: all .2s ease-in;
+    &:hover{
+        color: #FFFF00;
     }
 `;
 export const Arrow = styled(BsFillShiftFill)`
