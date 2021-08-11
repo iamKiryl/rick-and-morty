@@ -20,6 +20,7 @@ export const ListLink = styled(Link)`
 export const Li = styled.li`
 max-width: 400px;
 font-weight: 600;
+margin: 0 auto;
 background-color: rgba(255, 255, 255, 0.6);;
 border-radius: 10px;
 @media screen and (max-width: 680px){
