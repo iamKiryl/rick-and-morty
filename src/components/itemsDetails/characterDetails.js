@@ -22,12 +22,13 @@ const CharacterDetails = ({getData}) => {
     }, [getData, id])
 
     const {gender, name, origin, status, img} = character;
+    const back = () => window.history.back();
     return (
 
         loading ? <Spinner/> : 
         (
             <DetailsDiv>
-                <ArrowLink to='/rick-and-morty/characters/' >
+                <ArrowLink to='/' onClick={back}>
                      <Arrow/>
                 </ArrowLink>
                 <CharImageContainer>

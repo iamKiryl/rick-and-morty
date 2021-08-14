@@ -27,3 +27,10 @@ border-radius: 10px;
     margin: 0 auto;
 }
 `
+
+export const ArrowsDiv = styled.div`
+    max-width: 350px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+`; 

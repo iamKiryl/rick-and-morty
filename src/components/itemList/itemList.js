@@ -14,16 +14,17 @@ const ItemList = ({getData, getPath}) => {
             )
         })
     }
-
     useEffect(() => {
         (async () => {
-            const {results} = await getData();
-                setItemsList(results);
-                setLoadind(false);
+            const id = window.location.href.split('=')[1];
+            const {results} = await getData(id);
+            setItemsList(results);
+            setLoadind(false);
         })()   
     }, [getData])
 
     const items = renderItems(itemsList);
+
     if (!itemsList) return null
 
     return (
@@ -31,7 +32,7 @@ const ItemList = ({getData, getPath}) => {
             <>
                 <Ul>
                     {items}
-                </Ul>  
+                </Ul>
             </>
         )
     );

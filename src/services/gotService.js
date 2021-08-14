@@ -11,14 +11,33 @@ export default class GotService{
         }
         return await res.json();
     }
-    getAllCharacters = async () => {
-        const res = await this.getResource('/character/');
+    getAllCharacters = async (id = 1) => {
+        
+            const res = await this.getResource(`/character/?page=${id}`);
+            return {
+                results: res.results, 
+                res      
+            }
+            
+         
+        // else {
+        //     const res = await this.getResource('/character/?page=1');
+        //     return {
+        //         results: res.results, 
+        //         res
+        //     }
+        // }
+            ;
+    }
+
+    getCharactersPages = async (id) => {
+        const res = await this.getResource(`/character/?page=${id}`);
         return {
             results: res.results, 
             res
         }
-            ;
     }
+
     getAllEpisodes = async () => {
         const res =  await this.getResource('/episode/');
         return {
