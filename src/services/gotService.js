@@ -56,7 +56,6 @@ export default class GotService{
     isLink = link => {
         const id = link.split('/')[link.length-1];
         const position = link.split('/')[link.length-2];
-        console.log(id, position)
         return `/${position}/${id}/`
     }
     _extractId = (item) => {

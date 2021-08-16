@@ -34,7 +34,8 @@ export const CharInfo = styled.div`
 `;
 
 export const DetailsLink = styled(Link)`
-
+    color: darkgreen;
+    text-decoration: none;
 `;
 
 export const ArrowLink = styled(Link)`

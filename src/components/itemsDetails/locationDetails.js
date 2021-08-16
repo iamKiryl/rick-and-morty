@@ -1,4 +1,5 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect } from 'react';
+import {useHistory} from 'react-router-dom';
 import { DetailsDiv, ArrowLink, Arrow } from './itemDetailsElements';
 import Spinner from '../spinner';
 
@@ -9,10 +10,14 @@ const LocationDetails = ({getData}) => {
     const hrefArr = href.split('/');
     const l = hrefArr.length;
     const id = hrefArr[l-1];
+    const history = useHistory();
 
 
     const [location, setLocation] = useState('');
     const [loading, setLoadind] = useState(true);
+    const [locationLink, setLocationLink] = useState('sdsd');
+
+    const his = (history) => setLocationLink(`${history.goBack()}`); 
 
     useEffect(() => {
         (async () => {
@@ -21,7 +26,7 @@ const LocationDetails = ({getData}) => {
                 setLoadind(false);
             })
         })()   
-    }, [getData, id])
+    }, [getData, id, history])
 
     const {dimension, name, created} = location;
             
@@ -29,7 +34,7 @@ const LocationDetails = ({getData}) => {
         loading ? <Spinner/> : 
         (
             <DetailsDiv>
-                <ArrowLink to='/rick-and-morty/location/' >
+                <ArrowLink onClick={() => his(history)} to={`/rick-and-morty/${locationLink}`} >
                      <Arrow/>
             </ArrowLink>
                 <div>Title: {name}</div>

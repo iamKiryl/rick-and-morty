@@ -19,7 +19,6 @@ const CharacterDetails = ({getData}) => {
         const length = arr.length-1;
         const id = arr[length]
         const position =  arr[length-1];
-        console.log(`/${position}/${id}/`);
         if (position === undefined) return false
         return `/rick-and-morty/${position}/${id}`
     }
