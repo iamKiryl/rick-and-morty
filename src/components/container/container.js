@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Container = ({itemList}) => {
+const Container = (props) => {
     return (
         <ContainerDiv>
-            {itemList}
+            {props.children}
         </ContainerDiv>
     )
 }

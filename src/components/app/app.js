@@ -21,28 +21,39 @@ const App = () => {
                     <Header/>
                         <Route exact path='/rick-and-morty/characters/' 
                             render={() => 
-                                <Container itemList={<ItemList getPath={'/rick-and-morty/characters/'} getData={gotService.getAllCharacters} />} 
-                                /> }/>
+                                <Container >
+                                    <ItemList getPath={'/rick-and-morty/characters/'} getData={gotService.getAllCharacters} /> 
+                                </Container> }/>
                         <Route exact path='/rick-and-morty/characters/:id' 
                             render={() => 
-                                <Container itemList={<CharacterDetails getData={gotService.getCharacter} />} 
-                                /> }/>
+                                <Container>
+                                    <CharacterDetails getData={gotService.getCharacter} />
+                                </Container>
+                                }/>
                         <Route exact path='/rick-and-morty/location/' 
                             render={() => 
-                                <Container itemList={<ItemList getPath={'/rick-and-morty/location/'} getData={gotService.getAllLocations} /> } 
-                            />}/>
+                                <Container>
+                                    <ItemList getPath={'/rick-and-morty/location/'} getData={gotService.getAllLocations} />
+                                </Container>
+                            }/>
                         <Route exact path='/rick-and-morty/location/:id' 
                             render={() => 
-                                <Container itemList={<LocationDetails  getData={gotService.getLocation} /> } 
-                            />}/>
+                                <Container>
+                                    <LocationDetails  getData={gotService.getLocation} />
+                                </Container>  
+                            }/>
                         <Route exact path='/rick-and-morty/episode/' 
                             render={() =>   
-                                <Container itemList={<ItemList getPath={'/rick-and-morty/episode/'} getData={gotService.getAllEpisodes}/>} />  
+                                <Container>
+                                    <ItemList getPath={'/rick-and-morty/episode/'} getData={gotService.getAllEpisodes} />  
+                                </Container> 
                             }/>
 
                         <Route exact path='/rick-and-morty/episode/:id' 
                             render={() =>   
-                                <Container itemList={<EpisodeDetails getData={gotService.getEpisode}/>} />  
+                                <Container>
+                                    <EpisodeDetails getData={gotService.getEpisode}/> 
+                                </Container> 
                             }/>
                 </AppContainer>
             </AppBlock>
