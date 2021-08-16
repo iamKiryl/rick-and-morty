@@ -55,3 +55,23 @@ export const ArrowLink = styled(Link)`
 export const Arrow = styled(BsFillShiftFill)`
     transform: rotate(270deg) scale(1.3);
 `;
+
+export const StatusDiv = styled.div`
+    padding-left: 1rem;
+    position: relative;
+    &::before{
+        content: '';
+        position: absolute;
+        width: .6rem;
+        height: .6rem;
+        border-radius: 50%;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: ${({statusDote}) => (statusDote ? 'green' : 'red')};;
+    }
+`;
+
+export const Title = styled.h3`
+    font-size: 1.5rem;
+`;

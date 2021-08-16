@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Spinner from '../spinner';
-import { DetailsDiv, CharInfo, CharImageContainer, CharImage, ArrowLink, Arrow } from './itemDetailsElements';
+import { DetailsDiv, CharInfo, CharImageContainer, CharImage, ArrowLink, Arrow, StatusDiv, Title } from './itemDetailsElements';
 
 const CharacterDetails = ({getData}) => {
 
@@ -22,7 +22,7 @@ const CharacterDetails = ({getData}) => {
     }, [getData, id])
 
     const {gender, name, origin, status, img} = character;
-
+    const statusDote = status === 'Alive' ? true : false;
     return (
 
         loading ? <Spinner/> : 
@@ -35,10 +35,9 @@ const CharacterDetails = ({getData}) => {
                     <CharImage src={img} />
                 </CharImageContainer>
                 <CharInfo>
-                    <div>Name: {name}</div>
-                    <div>Gender: {gender}</div>
+                    <Title>{name}</Title>
+                    <StatusDiv statusDote={statusDote}>{status} - {gender}</StatusDiv>
                     <div>Origin: {origin}</div>
-                    <div>Status: {status}</div>
                 </CharInfo>
             </DetailsDiv>
         )

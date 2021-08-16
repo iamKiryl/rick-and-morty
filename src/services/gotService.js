@@ -49,6 +49,9 @@ export default class GotService{
         return this._transformLocatoin(location);
     }
 
+    _transformDate = (date) => date.split('T')[0]
+    
+
     isSet = data => data ? data : 'no data :(';
 
     _extractId = (item) => {
@@ -72,7 +75,7 @@ export default class GotService{
             id: this._extractId(episode),
             name: this.isSet(episode.name),
             episode: this.isSet(episode.episode),
-            created: this.isSet(episode.created)
+            created: this._transformDate(episode.created)
         };
     }
 
@@ -81,7 +84,7 @@ export default class GotService{
             id: this._extractId(location),
             name: this.isSet(location.name),
             dimension: this.isSet(location.dimension),
-            created: this.isSet(location.created),
+            created: this._transformDate(location.created),
         };
     }
     
