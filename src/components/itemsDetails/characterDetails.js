@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Spinner from '../spinner';
-import { DetailsDiv, CharInfo, CharImageContainer, CharImage, ArrowLink, Arrow, StatusDiv, Title } from './itemDetailsElements';
+import { DetailsDiv, CharInfo, CharImageContainer, CharImage, ArrowLink, Arrow, StatusDiv, Title, DetailsLink } from './itemDetailsElements';
 
 const CharacterDetails = ({getData}) => {
 
@@ -11,18 +11,34 @@ const CharacterDetails = ({getData}) => {
 
     const [character, setCharacter] = useState('');
     const [loading, setLoadind] = useState(true);
+    const [ link, setLink ] = useState('');
+    const {gender, name, origin, status, img, originLink} = character;
+
+    const isLink =  link => {
+        const arr =  link.split('/');
+        const length = arr.length-1;
+        const id = arr[length]
+        const position =  arr[length-1];
+        console.log(`/${position}/${id}/`);
+        if (position === undefined) return false
+        return `/rick-and-morty/${position}/${id}`
+    }
 
     useEffect(() => {
         (async () => {
             getData(id).then(item => {
                 setCharacter(item)
                 setLoadind(false)
+                if(originLink !== undefined){
+                    setLink(isLink(originLink))
+                }
             })
         })()   
-    }, [getData, id])
+    }, [getData, id, originLink])
 
-    const {gender, name, origin, status, img} = character;
+   
     const statusDote = status === 'Alive' ? true : false;
+
     return (
 
         loading ? <Spinner/> : 
@@ -37,7 +53,7 @@ const CharacterDetails = ({getData}) => {
                 <CharInfo>
                     <Title>{name}</Title>
                     <StatusDiv statusDote={statusDote}>{status} - {gender}</StatusDiv>
-                    <div>Origin: {origin}</div>
+                    <div>from: <DetailsLink to={link}>{origin}</DetailsLink></div>
                 </CharInfo>
             </DetailsDiv>
         )

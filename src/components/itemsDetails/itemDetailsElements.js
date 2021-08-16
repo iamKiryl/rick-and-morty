@@ -33,6 +33,10 @@ export const CharInfo = styled.div`
     justify-content: center;
 `;
 
+export const DetailsLink = styled(Link)`
+
+`;
+
 export const ArrowLink = styled(Link)`
     color: darkgreen;
     width: 50px;

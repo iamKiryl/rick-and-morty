@@ -53,7 +53,12 @@ export default class GotService{
     
 
     isSet = data => data ? data : 'no data :(';
-
+    isLink = link => {
+        const id = link.split('/')[link.length-1];
+        const position = link.split('/')[link.length-2];
+        console.log(id, position)
+        return `/${position}/${id}/`
+    }
     _extractId = (item) => {
         const idRegExp = /\/([0-9]*)$/;
         return item.url.match(idRegExp)[1];
@@ -66,6 +71,7 @@ export default class GotService{
             status: this.isSet(char.status),
             gender: this.isSet(char.gender),
             origin: this.isSet(char.origin.name),
+            originLink: char.origin.url,
             img: this.isSet(char.image)
         };
     }
