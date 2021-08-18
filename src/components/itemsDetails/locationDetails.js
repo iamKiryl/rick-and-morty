@@ -15,10 +15,7 @@ const LocationDetails = ({getData}) => {
 
     const [location, setLocation] = useState('');
     const [loading, setLoadind] = useState(true);
-    const [locationLink, setLocationLink] = useState('sdsd');
-
-    const his = (history) => setLocationLink(`${history.goBack()}`); 
-
+    
     useEffect(() => {
         (async () => {
             getData(id).then(item => {
@@ -29,12 +26,16 @@ const LocationDetails = ({getData}) => {
     }, [getData, id, history])
 
     const {dimension, name, created} = location;
-            
+    
+    const his = (num = -1) => {
+        history.go(num);
+    }        
+    
     return (
         loading ? <Spinner/> : 
         (
             <DetailsDiv>
-                <ArrowLink onClick={() => his(history)} to={`/rick-and-morty/${locationLink}`} >
+                <ArrowLink onClick={() => { his(-1); }} to={`/rick-and-morty/`} >
                      <Arrow/>
             </ArrowLink>
                 <div>Title: {name}</div>
