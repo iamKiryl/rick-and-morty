@@ -12,7 +12,8 @@ const CharacterDetails = ({getData}) => {
     const [character, setCharacter] = useState('');
     const [loading, setLoadind] = useState(true);
     const [ link, setLink ] = useState('');
-    const {gender, name, origin, status, img, originLink} = character;
+    const [ locationLink, setLocationLink ] = useState('');
+    const {gender, name, origin, status, img, originLink, location, locationUrl} = character;
 
     const isLink =  link => {
         const arr =  link.split('/');
@@ -31,9 +32,12 @@ const CharacterDetails = ({getData}) => {
                 if(originLink !== undefined){
                     setLink(isLink(originLink))
                 }
+                if(locationUrl !== undefined){
+                    setLocationLink(isLink(locationUrl))
+                }
             })
         })()   
-    }, [getData, id, originLink])
+    }, [getData, id, originLink, locationUrl])
 
    
     const statusDote = status === 'Alive' ? true : false;
@@ -53,6 +57,10 @@ const CharacterDetails = ({getData}) => {
                     <Title>{name}</Title>
                     <StatusDiv statusDote={statusDote}>{status} - {gender}</StatusDiv>
                     <div>from: <DetailsLink to={link}>{origin}</DetailsLink></div>
+                    <div> 
+                        <p>Last known location:</p>
+                         <DetailsLink to={locationLink}>{location}</DetailsLink>
+                    </div>
                 </CharInfo>
             </DetailsDiv>
         )
